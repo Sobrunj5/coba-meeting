@@ -87,9 +87,9 @@ Route::get('/superadmin', function() {
 
 
 //Auth Super Admin
-    Route::get('/superadmin-login', 'superAdmin\Auth\LoginController@showLoginForm')->name('superadmin.login');
-    Route::post('/superadmin-login', 'superAdmin\Auth\LoginController@login')->name('superadmin.login.submit');
-    Route::get('/superadmin-logout', 'superAdmin\Auth\LoginController@logout')->name('superadmin.logout');
+    Route::get('/superadmin-login', 'superadmin\Auth\LoginController@showLoginForm')->name('superadmin.login');
+    Route::post('/superadmin-login', 'superadmin\Auth\LoginController@login')->name('superadmin.login.submit');
+    Route::get('/superadmin-logout', 'superadmin\Auth\LoginController@logout')->name('superadmin.logout');
 // Auth Admin Mitra
     Route::get('/adminmitra-login', 'adminmitra\Auth\LoginController@showLoginForm')->name('adminmitra.login');
     Route::post('/adminmitra-login', 'adminmitra\Auth\LoginController@login')->name('adminmitra.login.submit');
