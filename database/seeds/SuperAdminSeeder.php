@@ -1,6 +1,8 @@
 <?php
 
+use App\SuperAdmin;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class SuperAdminSeeder extends Seeder
 {
@@ -11,12 +13,11 @@ class SuperAdminSeeder extends Seeder
      */
     public function run()
     {
-        \App\SuperAdmin::create([
-            'nama' => 'Sobrun',
-            'no_hp' => '08929329739',
-            'email' => 'sobrunj5@gmail.com',
-            'password' => \Illuminate\Support\Facades\Hash::make('1234567')
-        ]);
-
+        $admin = new SuperAdmin();
+        $admin->nama = 'Sobrun';
+        $admin->no_hp = '08929329739';
+        $admin->email = 'sobrunj5@gmail.com';
+        $admin->password = Hash::make('1234567');
+        $admin->save();
     }
 }
