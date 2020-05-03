@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/superadmin', function() {
-     return view('templates.superadmin');
-});
+//Route::get('/superadmin', function() {
+    // return view('templates.superadmin');
+//});
 
 //Route::get('/adminmitra', function()  {
     //return view('templates.adminmitra');
@@ -96,6 +96,7 @@ Route::get('/superadmin', function() {
     Route::get('/adminmitra-register', 'adminmitra\Auth\RegisterController@showRegisterForm')->name('adminmitra.register');
     Route::post('/adminmitra-register', 'adminmitra\Auth\RegisterController@store')->name('adminmitra.register.submit');
     Route::get('/adminmitra-logout', 'adminmitra\Auth\LoginController@logout')->name('adminmitra.logout');
+    Route::get('/activate','adminmitra\Auth\ActivationController@activate')->name('adminmitra.activate');
 
 
     Auth::routes();

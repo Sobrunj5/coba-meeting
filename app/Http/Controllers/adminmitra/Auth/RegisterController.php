@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\adminmitra\Auth;
 
+use App\Events\AdminMitra\Auth\AdminMitraActivationEmail;
 use App\Http\Controllers\Controller;
 use App\Mitra;
 use App\Providers\RouteServiceProvider;
@@ -10,6 +11,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class RegisterController extends Controller
 {
@@ -58,18 +61,18 @@ class RegisterController extends Controller
     public  function  store(Request $request)
     {
 
-        $this->validate($request, [
-            'nama_mitra'    => 'required|unique:mitras',
-            'email'         => 'required|unique:mitras|email',
-            'no_hp'         => 'required|unique:mitras',
-            "password"      => 'required',
-            'nama_pemilik'  => 'required',
-            'nama_bank'     => 'required',
-            'nama_rekening' => 'required',
-            'nama_akun_bank'=> 'required',
-            'alamat'        =>'required',
-
-        ]);
+//        $this->validate($request, [
+//            'nama_mitra'    => 'required|unique:mitras',
+//            'email'         => 'required|unique:mitras|email',
+//            'no_hp'         => 'required|unique:mitras',
+//            "password"      => 'required',
+//            'nama_pemilik'  => 'required',
+//            'nama_bank'     => 'required',
+//            'nama_rekening' => 'required',
+//            'nama_akun_bank'=> 'required',
+//            'alamat'        =>'required',
+//
+//        ]);
 
 
         $data = new Mitra();
@@ -82,13 +85,14 @@ class RegisterController extends Controller
         $data->nama_rekening    =$request->nama_rekening;
         $data->nama_akun_bank   =$request->nama_akun_bank;
         $data->alamat           =$request->alamat;
+        $data->activation_token = Str::random( 100);
+        //dd($data);
         $data->save();
 
+        event(new AdminMitraActivationEmail($data));
         return redirect()->route('adminmitra.login');
 
 
-
-
-
     }
+
 }

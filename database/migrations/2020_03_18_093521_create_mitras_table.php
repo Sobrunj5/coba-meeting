@@ -24,7 +24,8 @@ class CreateMitrasTable extends Migration
             $table->string('nama_rekening')->nullable();
             $table->string('nama_akun_bank')->nullable();
             $table->text('alamat')->nullable();
-            $table->enum('status', ['1', '0']);
+            $table->boolean('status')->default(false);
+            $table->string('activation_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

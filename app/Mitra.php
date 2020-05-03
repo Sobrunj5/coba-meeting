@@ -18,18 +18,19 @@ class Mitra extends Authenticatable
 
     protected $quard ='adminmitra';
     protected $table ='mitras';
-
-    protected $fillable = [
-        'nama_mitra',
-        'email',
-        'password',
-        'no_hp',
-        'nama_pemilik',
-        'nama_bank',
-        'nama_rekening',
-        'nama_akun_bank',
-        'alamat',
-    ];
+    protected $guarded=[];
+//    protected $fillable = [
+//        'nama_mitra',
+//        'email',
+//        'password',
+//        'no_hp',
+//        'nama_pemilik',
+//        'nama_bank',
+//        'nama_rekening',
+//        'nama_akun_bank',
+//        'alamat',
+//
+//    ];
 
     /**
      * The attributes that should be hidden for arrays.

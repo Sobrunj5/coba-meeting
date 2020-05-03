@@ -53,7 +53,7 @@ var Layout = function () {
                 }
             }
             height = height - 32;
-            content.attr('style', 'min-height:' + height + 'px');
+            // content.attr('style', 'min-height:' + height + 'px');
         }
     };
 
